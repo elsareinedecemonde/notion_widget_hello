@@ -1,0 +1,21 @@
+function afficherSalutations() {
+    // Récupère l'heure actuelle à Paris
+    let maintenant = new Date();
+    let options = { timeZone: "Europe/Paris", hour: "numeric", hour12: false };
+    let heureParis = new Intl.DateTimeFormat("fr-FR", options).format(maintenant);
+    let heures = parseInt(heureParis);
+
+    // Remplacez "VOTRE NOM ICI" par votre nom
+    let nom = "VOTRE NOM ICI";
+    let salutation = "";
+
+    if (heures < 12) {
+        salutation = "Bonjour " + nom;
+    } else if (heures < 18) { // de 12h à 17h inclus
+        salutation = "Bon après-midi " + nom;
+    } else { // de 18h à 23h inclus
+        salutation = "Bonsoir " + nom;
+    }
+
+    document.getElementById("salutation").innerHTML = salutation;
+}
